@@ -75,7 +75,15 @@ const completeTask = (id) => {
   tasks[index] = updated;
   return updated;
 };
+// Stores the assignee on the task. Returns the updated task, or null if not found.
+const assignTask = (id, assignee) => {
+  const index = tasks.findIndex((t) => t.id === id);
+  if (index === -1) return null;
 
+  const updated = { ...tasks[index], assignee };
+  tasks[index] = updated;
+  return updated;
+};
 const _reset = () => {
   tasks = [];
 };
@@ -90,5 +98,6 @@ module.exports = {
   update,
   remove,
   completeTask,
+  assignTask,
   _reset,
 };
